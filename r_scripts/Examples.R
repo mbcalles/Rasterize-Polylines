@@ -22,7 +22,7 @@ ggsave(ggplot(bound) +
   geom_sf(data = sep_bls,color="black") + 
   xlab("Longitude") + 
   ylab("Latitude") +
-  theme_bw(),filename = "vancouver_bikelane_vector.tiff",dpi = 72,path = "output_data")
+  theme_bw(),filename = "vancouver_bikelane_vector.jpg",path = "output_data")
 
 
 
@@ -36,7 +36,7 @@ sepbls_rast <- StudyAreaLineDensityRaster(inputStudyArea = VanCT,
 
 
 
-sepbls_rast_df <- as.data.frame(sepbls_rast, xy = TRUE)
+# sepbls_rast_df <- as.data.frame(sepbls_rast, xy = TRUE)
 
 
 ggsave(plot = ggplot() +
@@ -46,7 +46,7 @@ ggsave(plot = ggplot() +
          xlab("Longitude") + 
          ylab("Latitude") +
          coord_quickmap() + 
-         theme_bw(),filename = "vancouver_bikelane_raster.tiff",dpi = 72,path = "output_data")
+         theme_bw(),filename = "vancouver_bikelane_raster.jpg",path = "output_data")
           
 
 # sepbls_rast_mask <- mask(sepbls_rast, as(bound, "Spatial"))
