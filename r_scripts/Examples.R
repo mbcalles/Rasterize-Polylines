@@ -16,13 +16,13 @@ sep_bls <- st_read("input_data",
                    layer = "sep_bls")#separated bike lane polylines
 
 
-ggplot(bound) +
+ggsave(ggplot(bound) +
   geom_sf() + 
-  ggtitle("City of Vancouver Boundary overlaid by separated bike lane polylines") + 
+  ggtitle("City of Vancouver Boundary overlaid by\nseparated bike lane polylines") + 
   geom_sf(data = sep_bls,color="black") + 
   xlab("Longitude") + 
   ylab("Latitude") +
-  theme_bw()
+  theme_bw(),filename = "vancouver_bikelane_vector.tiff",dpi = 72,path = "output_data")
 
 
 
@@ -39,14 +39,15 @@ sepbls_rast <- StudyAreaLineDensityRaster(inputStudyArea = VanCT,
 sepbls_rast_df <- as.data.frame(sepbls_rast, xy = TRUE)
 
 
-ggplot() +
-  geom_raster(data = sepbls_rast_df,aes(x=x,y=y,fill=layer)) + 
-  scale_fill_viridis_c() +
-  ggtitle("City of Vancouver Bikelane Density") + 
-  xlab("Longitude") + 
-  ylab("Latitude") +
-  coord_quickmap() + 
-  theme_bw()
+ggsave(plot = ggplot() +
+         geom_raster(data = sepbls_rast_df,aes(x=x,y=y,fill=layer)) + 
+         scale_fill_viridis_c(name = "Metres of\nBikelanes\nwithin 100m") +
+         ggtitle("City of Vancouver: Rasterized Separated Bikelanes") + 
+         xlab("Longitude") + 
+         ylab("Latitude") +
+         coord_quickmap() + 
+         theme_bw(),filename = "vancouver_bikelane_raster.tiff",dpi = 72,path = "output_data")
+          
 
 # sepbls_rast_mask <- mask(sepbls_rast, as(bound, "Spatial"))
 
