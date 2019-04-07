@@ -13,5 +13,5 @@ The function has 4 inputs, a study area extent, the polylines to be rasterized, 
 
 Example
 
- ![My image](https://github.com/mbcalles/Generate-Raster-Data-from-Vector-R/tree/master/imgs/vancouver_bikelane_vector.jpg)
+ ![My image](imgs/vancouver_bikelane_vector.jpg)
  
