@@ -1,0 +1,13 @@
+!table
+!version 300
+!charset Neutral
+
+Definition Table
+  File "4830E_54530N.tif"
+  Type "RASTER"
+  (483639.1,5463000.43) (0,0) Label "Pt 1",
+  (498326.6,5463000.43) (29375,0) Label "Pt 2",
+  (483639.1,5449435.93) (0,27129) Label "Pt 3"
+  CoordSys Earth Projection 8, 74, "m", -123, 0, 0.9996, 500000, 0
+  Fields 1
+    datatype char(254) ;
