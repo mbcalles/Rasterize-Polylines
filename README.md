@@ -11,6 +11,10 @@ The function has 4 inputs, a study area extent, the polylines to be rasterized, 
 5) Assign the length within each buffer to the associated raster
 6) Output raster where each grid cell has the value of the length of the polylines within the specified buffer length of the cell centroid
 
-Example: 
+Example
+
 
 ![Input Data](output_data/vancouver_bikelane_vector.tiff)
+
+
+![Output Data](output_data/vancouver_bikelane_raster.tiff)
