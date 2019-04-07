@@ -2,7 +2,7 @@
 #1. 
 
 
-StudyAreaLineDensityRaster <- function(inputStudyArea,inputLines,cellSize,buffWidth){
+rasterize_lines <- function(inputStudyArea,inputLines,cellSize,buffWidth){
   start.time <- Sys.time()
   require(sf)
   require(raster)

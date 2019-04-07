@@ -2,7 +2,7 @@
 setwd("D:/GitHub/Generate-Raster-Data-from-Vector-R")
 
 source("set-up.R")#load script with required packages
-source("r_scripts/Functions/StudyAreaLineDensityRaster.R")#load custom function
+source("r_scripts/function/rasterize_lines.R")#load custom function
 
 #Load Vector Data
 
