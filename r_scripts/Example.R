@@ -18,7 +18,7 @@ sep_bls <- st_read("input_data",
 
 ggsave(ggplot(bound) +
   geom_sf() + 
-  ggtitle("City of Vancouver Boundary overlaid by\nseparated bike lane polylines") + 
+  ggtitle("City of Vancouver Boundary overlaid by separated bike lane polylines") + 
   geom_sf(data = sep_bls,color="black") + 
   xlab("Longitude") + 
   ylab("Latitude") +
