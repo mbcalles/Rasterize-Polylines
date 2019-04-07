@@ -22,7 +22,7 @@ ggsave(ggplot(bound) +
   geom_sf(data = sep_bls,color="black") + 
   xlab("Longitude") + 
   ylab("Latitude") +
-  theme_bw(),filename = "vancouver_bikelane_vector.jpg",path = "output_data")
+  theme_bw(),filename = "vancouver_bikelane_vector.jpg",path = "imgs")
 
 
 
