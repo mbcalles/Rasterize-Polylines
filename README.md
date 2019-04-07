@@ -22,13 +22,13 @@ The function "rasterize_lines" takes the following steps to rasterize the polyli
 
 Here we have a map of the City of Vancouver's separated bike lanes as input data:
 
-## Input data:
+## Input data
  ![My image](imgs/vancouver_bikelane_vector.jpg)
  
-After running my function these data have been converted to raster format, where the city of Vancouver has 100 x 100m grid draped over the extent of its boundaries, where each individual grid cell is assigned the the sum of the length of separated bike lanes within a 100m of it centroid. 
- 
- ## Output surface:
+
+## Output surface
  
   ![My image](imgs/vancouver_bikelane_raster.jpg)
 
+After running "rasterize_lines" the data have been converted to raster format. Each individual grid cell is assigned the the sum of the length of separated bike lanes within a 100m of its centroid. 
  
