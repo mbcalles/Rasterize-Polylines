@@ -13,6 +13,7 @@ The function has 4 inputs, a study area extent, the polylines to be rasterized, 
 
 Example
 
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 ![](output_data/vancouver_bikelane_vector.tiff)
 
