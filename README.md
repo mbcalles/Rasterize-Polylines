@@ -13,9 +13,5 @@ The function has 4 inputs, a study area extent, the polylines to be rasterized, 
 
 Example
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-
-![](output_data/vancouver_bikelane_vector.tiff)
-
-
-![](output_data/vancouver_bikelane_raster.tiff)
+ ![My image](mbcalles.github.com/Generate-Raster-Data-from-Vector-R/img/vancouver_bikelane_raster.tiff)
+ 
