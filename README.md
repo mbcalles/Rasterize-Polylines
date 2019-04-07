@@ -4,12 +4,12 @@ As a part of a University level GIS course I taught I needed to generate some ra
 
 The function has 4 inputs, a study area extent, the polylines to be rasterized, the spatial resolution of the output raster, and the buffer length from which to calculate line densities from each raster cell centroid. The function takes the following steps: 
 
-1) Create empty raster surface of specified grid cell size and study area extent
-2) Generate buffers of specified length from the centroid of the empty raster surface
-3) Split the polylines by the centroid buffers layer
-4) Sum the length of polylines within each buffer in the centroid buffers layer
-5) Assign the length within each buffer to the associated raster
-6) Output raster where each grid cell has the value of the length of the polylines within the specified buffer length of the cell centroid
+1. Create empty raster surface of specified grid cell size and study area extent
+2. Generate buffers of specified length from the centroid of the empty raster surface
+3. Split the polylines by the centroid buffers layer
+4. Sum the length of polylines within each buffer in the centroid buffers layer
+5. Assign the length within each buffer to the associated raster
+6. Output raster where each grid cell has the value of the length of the polylines within the specified buffer length of the cell centroid
 
 # Example
 
