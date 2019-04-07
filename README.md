@@ -14,7 +14,7 @@ The function has 4 inputs, a study area extent, the polylines to be rasterized, 
 Example
 
 
-![Input Data](output_data/vancouver_bikelane_vector.tiff)
+![](output_data/vancouver_bikelane_vector.tiff)
 
 
-![Output Data](output_data/vancouver_bikelane_raster.tiff)
+![](output_data/vancouver_bikelane_raster.tiff)
