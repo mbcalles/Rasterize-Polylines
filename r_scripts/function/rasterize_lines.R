@@ -39,12 +39,16 @@ rasterize_lines <- function(inputStudyArea,inputLines,cellSize=500,buffWidth=500
     
     int_points_buff <- st_buffer(int_points,dist = 0.0000001) %>% st_combine() #buffer points to very small distance
     
-    xmin <- st_point(c(st_bbox(rast_point_buff)$xmin,st_bbox(rast_point_buff)$ymax))
-    xmax <- st_point(c(st_bbox(rast_point_buff)$xmax,st_bbox(rast_point_buff)$ymax))
-    ncells <-  round(st_distance(xmin,xmax)/50,0)
     
-    
-    grid <- st_make_grid(rast_point_buff,what = "polygons",n = ncells)#split bounding box of polygon into grid
+    # xmin <- st_point(c(st_bbox(rast_point_buff)$xmin,st_bbox(rast_point_buff)$ymax))
+    # xmax <- st_point(c(st_bbox(rast_point_buff)$xmax,st_bbox(rast_point_buff)$ymax))
+    # ymin <- st_point(c(st_bbox(rast_point_buff)$xmin,st_bbox(rast_point_buff)$ymin))
+    # ymax <- xmin
+    # x_length <- st_distance(xmin,xmax) #number of grid cells in x and y direction
+    # y_length <- st_distance(xmin,xmax) #number of grid cells in x and y direction
+    # 
+    # 
+    grid <- st_make_grid(rast_point_buff,what = "polygons",n = c(10,10))#split bounding box of polygon into grid
     grid <- grid[st_intersects(grid,int_points_buff,sparse = F)[,1]]#remove grid cells that do not intersect with the roads
     printPercent <- seq(from = 0, to = length(grid),by=(length(grid)/20))
     
@@ -73,13 +77,14 @@ rasterize_lines <- function(inputStudyArea,inputLines,cellSize=500,buffWidth=500
     #Join to line polygons, sum line segment length within each polygon
     rast_point_buff <-
       st_sf(data.frame(ID = seq(1, length(st_geometry(rast_point_buff))),
-                       geometry = rast_point_buff))
+                       geometry = rast_point_buff)) #create sf object with the geometry of the point buffer
     
     rast_point_buff <- rast_point_buff %>%
-      st_join(inputLines_ls) %>%
+      st_join(inputLines_ls) %>% #join lines split by buffer geometry and associated lengths to the buffer it falls within (e.g. points buffer is the target layer, input lines are join layer)
       group_by(ID) %>%
       summarize(line_length = sum(length_m)) %>%
-      mutate(line_length = replace_na(line_length, 0))
+      mutate(line_length = replace_na(line_length, 0)) %>% 
+      st_set_agr(c(line_length = "identity", ID = "identity")) #specify attrtibute-geometry relationship to avoid warning since we already know line_length represesnts the value over the entire geometry
     
     rast_point_buff_cntrd <- st_centroid(rast_point_buff)
     
