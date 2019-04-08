@@ -2,7 +2,7 @@
 #1. 
 
 
-rasterize_lines <- function(inputStudyArea,inputLines,cellSize=500,buffWidth=500,mask=F){
+rasterize_lines <- function(inputStudyArea,inputLines,cellSize=100,buffWidth=300,mask=F){
   start.time <- Sys.time()
   require(sf)
   require(raster)
