@@ -16,13 +16,15 @@ sep_bls <- st_read("input_data",
                    layer = "sep_bls")#separated bike lane polylines
 
 
-ggsave(ggplot(bound) +
+vector_map <- ggplot(bound) +
   geom_sf() + 
   ggtitle("City of Vancouver boundary by separated bike lane polylines") + 
   geom_sf(data = sep_bls,color="black") + 
   xlab("Longitude") + 
   ylab("Latitude") +
-  theme_bw(),filename = "vancouver_bikelane_vector.jpg",path = "imgs")
+  theme_bw()
+
+ggsave(filename = "vancouver_bikelane_vector.jpg",path = "imgs")
 
 
 
