@@ -32,19 +32,17 @@ ggsave(filename = "vancouver_bikelane_vector.jpg",path = "imgs")
 
 sepbls_rast <- rasterize_lines(inputStudyArea = VanCT,
                                           inputLines = sep_bls,
-                                          cellSize = 500,
-                                          buffWidth = 500,
+                                          cellSize = 100,
+                                          buffWidth = 300,
                                           mask=F)
 
-
-plot(sepbls_rast)
 
 sepbls_rast_df <- as.data.frame(sepbls_rast, xy = TRUE)
 
 
 rasterized_map <- ggplot() +
   geom_raster(data = sepbls_rast_df,aes(x=x,y=y,fill=layer)) + 
-  scale_fill_viridis_c(name = "Metres of\nBikelanes\nwithin 500m") +
+  scale_fill_viridis_c(name = "Metres of\nBikelanes\nwithin 300m") +
   ggtitle("City of Vancouver: Rasterized Separated Bikelanes") + 
   xlab("Longitude") + 
   ylab("Latitude") +
@@ -53,14 +51,9 @@ rasterized_map <- ggplot() +
   theme(legend.position="bottom") +
   theme(legend.key.width=unit(2, "cm"))
 
-ggsave(rasterized_map,filename = "vancouver_bikelane_raster.jpg",path = "output_data")
+ggsave(rasterized_map,device = "jpeg",filename = "vancouver_bikelane_raster.jpg",path = "imgs")
           
 
-
-
-# writeRaster(x = sepbls_rast_mask,
-#             filename = "output/sepbls_length_100mbuff_mask.tif",
-#             datatype = "FLT4S")
 
 
 
