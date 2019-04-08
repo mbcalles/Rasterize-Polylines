@@ -2,7 +2,7 @@
 #1. 
 
 
-rasterize_lines <- function(inputStudyArea,inputLines,cellSize,buffWidth){
+rasterize_lines <- function(inputStudyArea,inputLines,cellSize=500,buffWidth=500,mask=F){
   start.time <- Sys.time()
   require(sf)
   require(raster)
@@ -87,6 +87,14 @@ rasterize_lines <- function(inputStudyArea,inputLines,cellSize,buffWidth){
                             raster_template,
                             field = "line_length",
                             fun = sum)
+    
+    if(mask==TRUE){
+      
+      output_rast <- mask(output_rast, as(inputStudyArea, "Spatial"))
+      
+      
+    }
+    
     
   }else{
     "Input study area must be in the same projection as input lines"

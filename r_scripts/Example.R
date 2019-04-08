@@ -1,5 +1,5 @@
 
-setwd("D:/GitHub/Generate-Raster-Data-from-Vector-R")
+setwd("D:/GitHub/Rasterize-Polylines")
 
 source("set-up.R")#load script with required packages
 source("r_scripts/function/rasterize_lines.R")#load custom function
@@ -18,7 +18,7 @@ sep_bls <- st_read("input_data",
 
 ggsave(ggplot(bound) +
   geom_sf() + 
-  ggtitle("City of Vancouver Boundary overlaid by separated bike lane polylines") + 
+  ggtitle("City of Vancouver boundary by separated bike lane polylines") + 
   geom_sf(data = sep_bls,color="black") + 
   xlab("Longitude") + 
   ylab("Latitude") +
@@ -28,28 +28,30 @@ ggsave(ggplot(bound) +
 
 #"Rasterize" polyline data using custom function
 
-sepbls_rast <- StudyAreaLineDensityRaster(inputStudyArea = VanCT,
+sepbls_rast <- rasterize_lines(inputStudyArea = VanCT,
                                           inputLines = sep_bls,
-                                          cellSize = 100,
-                                          buffWidth = 100)
+                                          cellSize = 200,
+                                          buffWidth = 500,
+                                          mask=TRUE)
 
 
 
 
-# sepbls_rast_df <- as.data.frame(sepbls_rast, xy = TRUE)
+sepbls_rast_df <- as.data.frame(sepbls_rast, xy = TRUE)
 
 
-ggsave(plot = ggplot() +
-         geom_raster(data = sepbls_rast_df,aes(x=x,y=y,fill=layer)) + 
-         scale_fill_viridis_c(name = "Metres of\nBikelanes\nwithin 100m") +
-         ggtitle("City of Vancouver: Rasterized Separated Bikelanes") + 
-         xlab("Longitude") + 
-         ylab("Latitude") +
-         coord_quickmap() + 
-         theme_bw(),filename = "vancouver_bikelane_raster.jpg",path = "output_data")
+rasterized_map <- ggplot() +
+  geom_raster(data = sepbls_rast_df,aes(x=x,y=y,fill=layer)) + 
+  scale_fill_viridis_c(name = "Metres of\nBikelanes\nwithin 100m") +
+  ggtitle("City of Vancouver: Rasterized Separated Bikelanes") + 
+  xlab("Longitude") + 
+  ylab("Latitude") +
+  coord_quickmap() + 
+  theme_bw()
+
+ggsave(rasterized_map,filename = "vancouver_bikelane_raster.jpg",path = "output_data")
           
 
-# sepbls_rast_mask <- mask(sepbls_rast, as(bound, "Spatial"))
 
 
 # writeRaster(x = sepbls_rast_mask,
