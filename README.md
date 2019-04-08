@@ -30,5 +30,5 @@ Here we have a map of the City of Vancouver's separated bike lanes as input data
  
   ![My image](imgs/vancouver_bikelane_raster.jpg)
 
-After running "rasterize_lines" the data have been converted to raster format. Each individual grid cell is assigned the the sum of the length of separated bike lanes within a 100m of its centroid. 
+After running "rasterize_lines" the data have been converted to raster gride with a 100m spatial resolution. Each individual grid cell is assigned the the sum of the length of separated bike lanes within 300m of its centroid. 
  
