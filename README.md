@@ -1,6 +1,6 @@
 # Rasterize line vector data
 
-Wrote this function to generate some raster data for a lab exercise on map algebra for a GIS class I taught. _Rasterized" data are common for the development of land use regression models, which require all input data to be continuous surfaces. E.g. when developing a predictive surface for No2 concentrations, arterial road density within a given buffer length is likely an important predictor. Here I develop a function to automate the process of creating such a surface in R using the sf package. 
+Wrote this function to generate some raster data for a lab exercise on map algebra for a GIS class I taught. _Rasterized_ data are common for the development of land use regression models, which require all input data to be continuous surfaces. E.g. when developing a predictive surface for No2 concentrations, arterial road density within a given buffer length is likely an important predictor. Here I develop a function to automate the process of creating such a surface in R using the sf package. 
 
 The function "rasterize_lines" has 4 inputs:
 
